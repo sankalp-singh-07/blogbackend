@@ -36,7 +36,7 @@ export class CommentSchema extends BaseModel {
   static $columns = ['content', 'createdAt', 'id', 'postId', 'updatedAt', 'userId'] as const
   $columns = CommentSchema.$columns
   @column()
-  declare content: string
+  declare content: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column({ isPrimary: true })
@@ -53,13 +53,13 @@ export class PostSchema extends BaseModel {
   static $columns = ['content', 'createdAt', 'id', 'title', 'updatedAt', 'userId'] as const
   $columns = PostSchema.$columns
   @column()
-  declare content: string
+  declare content: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column({ isPrimary: true })
   declare id: number
   @column()
-  declare title: string
+  declare title: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
   @column()
@@ -70,15 +70,15 @@ export class UserSchema extends BaseModel {
   static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime
+  declare createdAt: DateTime | null
   @column()
-  declare email: string
+  declare email: string | null
   @column()
   declare fullName: string | null
   @column({ isPrimary: true })
   declare id: number
   @column({ serializeAs: null })
-  declare password: string
+  declare password: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }

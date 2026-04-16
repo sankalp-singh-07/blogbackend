@@ -1,16 +1,28 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeSave } from '@adonisjs/lucid/orm'
-import hash from '@adonisjs/core/services/hash'
-import { hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, beforeSave, hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
+import hash from '@adonisjs/core/services/hash'
 import Post from './post.js'
 import Comment from './comment.js'
 
-export default class User extends BaseModel {
+import { compose } from '@adonisjs/core/helpers'
+import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
+import { DbAccessTokensProvider, AccessToken } from '@adonisjs/auth/access_tokens'
+
+const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
+  uids: ['email'],
+  passwordColumnName: 'password',
+})
+
+export default class User extends compose(BaseModel, AuthFinder) {
+  static accessTokens = DbAccessTokensProvider.forModel(User)
+
+  declare currentAccessToken?: AccessToken
+
   @column({ isPrimary: true })
   declare id: number
 
-  @column()
+  @column({ columnName: 'fullName' })
   declare fullName: string
 
   @column()
@@ -18,13 +30,6 @@ export default class User extends BaseModel {
 
   @column({ serializeAs: null })
   declare password: string
-
-  @beforeSave()
-  static async hashPassword(user: User) {
-    if (user.$dirty.password) {
-      user.password = await hash.make(user.password)
-    }
-  }
 
   @hasMany(() => Post)
   declare posts: HasMany<typeof Post>
