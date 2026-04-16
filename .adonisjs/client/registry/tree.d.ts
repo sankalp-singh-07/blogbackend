@@ -8,4 +8,7 @@ export interface ApiDefinition {
     logout: typeof routes['auth.logout']
     me: typeof routes['auth.me']
   }
+  post: {
+    create: typeof routes['post.create']
+  }
 }

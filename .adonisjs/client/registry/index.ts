@@ -30,6 +30,12 @@ const routes = {
     tokens: [{"old":"/auth/me","type":0,"val":"auth","end":""},{"old":"/auth/me","type":0,"val":"me","end":""}],
     types: placeholder as Registry['auth.me']['types'],
   },
+  'post.create': {
+    methods: ["POST"],
+    pattern: '/posts/create',
+    tokens: [{"old":"/posts/create","type":0,"val":"posts","end":""},{"old":"/posts/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['post.create']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
