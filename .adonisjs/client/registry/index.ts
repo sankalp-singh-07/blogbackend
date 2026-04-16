@@ -30,11 +30,35 @@ const routes = {
     tokens: [{"old":"/auth/me","type":0,"val":"auth","end":""},{"old":"/auth/me","type":0,"val":"me","end":""}],
     types: placeholder as Registry['auth.me']['types'],
   },
+  'post.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts',
+    tokens: [{"old":"/posts","type":0,"val":"posts","end":""}],
+    types: placeholder as Registry['post.index']['types'],
+  },
+  'post.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts/:id',
+    tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['post.show']['types'],
+  },
   'post.create': {
     methods: ["POST"],
     pattern: '/posts/create',
     tokens: [{"old":"/posts/create","type":0,"val":"posts","end":""},{"old":"/posts/create","type":0,"val":"create","end":""}],
     types: placeholder as Registry['post.create']['types'],
+  },
+  'post.update': {
+    methods: ["PUT"],
+    pattern: '/posts/update/:id',
+    tokens: [{"old":"/posts/update/:id","type":0,"val":"posts","end":""},{"old":"/posts/update/:id","type":0,"val":"update","end":""},{"old":"/posts/update/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['post.update']['types'],
+  },
+  'post.destroy': {
+    methods: ["DELETE"],
+    pattern: '/posts/delete/:id',
+    tokens: [{"old":"/posts/delete/:id","type":0,"val":"posts","end":""},{"old":"/posts/delete/:id","type":0,"val":"delete","end":""},{"old":"/posts/delete/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['post.destroy']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 

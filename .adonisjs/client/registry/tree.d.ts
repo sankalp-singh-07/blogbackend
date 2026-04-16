@@ -9,6 +9,10 @@ export interface ApiDefinition {
     me: typeof routes['auth.me']
   }
   post: {
+    index: typeof routes['post.index']
+    show: typeof routes['post.show']
     create: typeof routes['post.create']
+    update: typeof routes['post.update']
+    destroy: typeof routes['post.destroy']
   }
 }
