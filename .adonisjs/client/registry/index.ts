@@ -60,6 +60,24 @@ const routes = {
     tokens: [{"old":"/posts/delete/:id","type":0,"val":"posts","end":""},{"old":"/posts/delete/:id","type":0,"val":"delete","end":""},{"old":"/posts/delete/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['post.destroy']['types'],
   },
+  'comment.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts/:postId/comments',
+    tokens: [{"old":"/posts/:postId/comments","type":0,"val":"posts","end":""},{"old":"/posts/:postId/comments","type":1,"val":"postId","end":""},{"old":"/posts/:postId/comments","type":0,"val":"comments","end":""}],
+    types: placeholder as Registry['comment.index']['types'],
+  },
+  'comment.create': {
+    methods: ["POST"],
+    pattern: '/posts/:postId/comments',
+    tokens: [{"old":"/posts/:postId/comments","type":0,"val":"posts","end":""},{"old":"/posts/:postId/comments","type":1,"val":"postId","end":""},{"old":"/posts/:postId/comments","type":0,"val":"comments","end":""}],
+    types: placeholder as Registry['comment.create']['types'],
+  },
+  'comment.destroy': {
+    methods: ["DELETE"],
+    pattern: '/comments/:id',
+    tokens: [{"old":"/comments/:id","type":0,"val":"comments","end":""},{"old":"/comments/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['comment.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

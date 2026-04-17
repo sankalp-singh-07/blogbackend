@@ -115,4 +115,40 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'comment.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/posts/:postId/comments'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { postId: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'comment.create': {
+    methods: ["POST"]
+    pattern: '/posts/:postId/comments'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { postId: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'comment.destroy': {
+    methods: ["DELETE"]
+    pattern: '/comments/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
 }

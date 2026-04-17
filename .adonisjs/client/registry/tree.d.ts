@@ -15,4 +15,9 @@ export interface ApiDefinition {
     update: typeof routes['post.update']
     destroy: typeof routes['post.destroy']
   }
+  comment: {
+    index: typeof routes['comment.index']
+    create: typeof routes['comment.create']
+    destroy: typeof routes['comment.destroy']
+  }
 }

@@ -31,6 +31,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column({ serializeAs: null })
   declare password: string
 
+  @column()
+  declare isAdmin: boolean
+
   @hasMany(() => Post)
   declare posts: HasMany<typeof Post>
 
