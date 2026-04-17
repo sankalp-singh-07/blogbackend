@@ -68,8 +68,8 @@ const routes = {
   },
   'comment.create': {
     methods: ["POST"],
-    pattern: '/posts/:postId/comments',
-    tokens: [{"old":"/posts/:postId/comments","type":0,"val":"posts","end":""},{"old":"/posts/:postId/comments","type":1,"val":"postId","end":""},{"old":"/posts/:postId/comments","type":0,"val":"comments","end":""}],
+    pattern: '/posts/:postId/comment',
+    tokens: [{"old":"/posts/:postId/comment","type":0,"val":"posts","end":""},{"old":"/posts/:postId/comment","type":1,"val":"postId","end":""},{"old":"/posts/:postId/comment","type":0,"val":"comment","end":""}],
     types: placeholder as Registry['comment.create']['types'],
   },
   'comment.destroy': {

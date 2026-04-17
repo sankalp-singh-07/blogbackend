@@ -129,7 +129,7 @@ export interface Registry {
   }
   'comment.create': {
     methods: ["POST"]
-    pattern: '/posts/:postId/comments'
+    pattern: '/posts/:postId/comment'
     types: {
       body: {}
       paramsTuple: [ParamValue]
